@@ -1,0 +1,76 @@
+.panel {
+    position: relative;
+    border-radius: $border-radius;
+    padding: .2rem .4rem .8rem .4rem;
+    margin-bottom: 1rem;
+
+    .panel-title {
+        color: darken($grey, 15%);
+        display: block;
+        font-size: 1rem;
+        font-weight: bold;
+        line-height: 1.8rem;
+        margin-top: 0;
+        padding: .2rem 0;
+
+        span {
+            background: #fff;
+            display: inline-block;
+            //margin-left: -.6rem;
+            padding: 0 .3rem;
+            position: relative;
+            z-index: 99;
+        }
+        &:after {
+            border-bottom: .1rem solid $grey;
+            content: "";
+            display: block;
+            height: .1rem;
+            -webkit-transform: translateY(-1rem);
+            transform: translateY(-1rem);
+            width: 100%;
+        }
+    }
+
+    &.ul {
+        & > ul {
+            margin: 0 auto;
+            padding-right: 0;
+            li {
+                list-style: none;
+
+                a {
+                    color: $dark-grey;
+                    font-size: .9rem;
+                    padding: .1rem .3rem;
+
+                    &:hover {
+                        color: $blue;
+                    }
+                }
+                span {
+                    color: $dark-grey;
+                    font-size: .9rem;
+                    padding: .1rem .3rem;
+                }
+            }
+        }
+        ul {
+            li {
+                list-style: none;
+            }
+        }
+    }
+    .seprator {
+        display: block;
+        width: 95%;
+        height: .05rem;
+        background-color: $grey;
+        margin: 0 auto;
+    }
+
+    .panel-body {
+        padding: 0 .3rem;
+        font-size: .9rem;
+    }
+}

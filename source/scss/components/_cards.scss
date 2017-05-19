@@ -1,0 +1,53 @@
+.card {
+
+    &.one {
+        border: .08rem solid rgba(0, 0, 0, 0.06);
+        border-radius: $border-radius;
+
+        .card-image {
+            img {
+                max-width: 100% !important;
+                height: auto !important;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            &.first {
+                img {
+                    border-radius: $border-radius $border-radius 0 0;
+                }
+            }
+            &.last {
+                img {
+                    border-radius: 0 0 $border-radius $border-radius;
+                }
+            }
+        }
+
+        .card-header {
+            padding: .1rem .8rem;
+
+            .card-title {
+                font-weight: normal;
+                color: $dark-grey;
+            }
+            .card-meta {
+                font-size: .8rem;
+                color: darken($grey, 20%);
+                font-weight: normal;
+            }
+        }
+        .card-body {
+            padding: .2rem .8rem;
+            font-weight: 100;
+            color: $dark-grey;
+            font-size: .9rem;
+            .desc {
+                margin: 0 auto;
+            }
+        }
+        .card-footer {
+            padding: .8rem .8rem;
+        }
+    }
+}

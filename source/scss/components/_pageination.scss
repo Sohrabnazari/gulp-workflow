@@ -1,0 +1,42 @@
+.pagination {
+    margin: 20px auto;
+    text-align: center;
+    li {
+        display: inline-block;
+
+        span,
+        a {
+            font-size: 1rem;
+            padding: .2rem .7rem;
+            color: $pagination-color;
+            border-radius: $border-radius;
+
+            &.active {
+                background-color: $pagination-color;
+                color: set-text-color($pagination-color);
+            }
+        }
+
+        span {
+            color: lighten($pagination-color, 20%);
+            cursor: default;
+        }
+        a {
+            cursor: pointer;
+            &:hover {
+                background-color: $grey;
+            }
+        }
+
+    }
+    &.pagination-sm > li > a,
+    &.pagination-sm > li > span {
+        padding: .2rem .5rem;
+        font-size: 0.6rem;
+    }
+    &.pagination-lg > li > a,
+    &.pagination-lg > li > span {
+        padding: 5px 16px;
+        font-size: 1.5rem;
+    }
+}

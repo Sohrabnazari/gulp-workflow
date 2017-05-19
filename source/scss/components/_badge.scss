@@ -1,0 +1,31 @@
+/*--------------------------------------------------------------
+ *-------------------- Badges - 0.1
+ *-------------------------------------------------------------*/
+.badge {
+  position: relative;
+
+  &[data-badge]::after {
+    background: $grey;
+    background-clip: padding-box;
+    border: 1px solid #fff;
+    border-radius: 45%;
+    color: $dark-grey;
+    content: attr(data-badge);
+    display: inline-block;
+    font-size: $fsize-sm;
+    // height: 1em;
+    //line-height: 1em;
+    min-width: 1rem;
+    padding: 0 .2rem;
+    text-align: center;
+    -webkit-transform: translate(-.2rem, -.5rem);
+    transform: translate(-.2rem, -.5rem);
+    white-space: nowrap;
+  }
+
+  @each $color, $value in $all-colors {
+    &.#{$color} {
+      @include badge-color($value);
+    }
+  }
+}

@@ -1,0 +1,145 @@
+/*--------------------------------------------------------------
+ *-------------------- Generate custom color for button
+ *-------------------------------------------------------------*/
+@mixin btn_color($color) {
+    background-color: $color;
+    color: set-text-color($color);
+    border: .1rem solid $color;
+    &:hover {
+        background-color: darken($color, 8%);
+        border-color: darken($color, 8%);
+    }
+    &:active,
+    &:focus,
+    &.active {
+        background-color: darken($color, 20%);
+        border-color: darken($color, 20%);
+    }
+}
+@mixin btn_transparent_color($color) {
+    background-color: transparent;
+    color: $color;
+    border: .1rem solid $color;
+    &:hover {
+        background-color: $color;
+        color: set-text-color($color);
+    }
+    &:active,
+    &:focus,
+    &.active {
+        background-color: darken($color, 20%);
+        color: set-text-color($color);
+    }
+}
+
+/*--------------------------------------------------------------
+ *-------------------- Generate color for Label
+ *-------------------------------------------------------------*/
+@mixin label-color($color:$blue) {
+    background-color: $color;
+    color: set-text-color($color);
+}
+
+/*--------------------------------------------------------------
+ *-------------------- Generate color for Badge
+ *-------------------------------------------------------------*/
+@mixin badge-color($color:$blue) {
+    &[data-badge]::after {
+        background-color: $color;
+        color: set-text-color($color);
+        border-color: $color;
+    }
+}
+
+/*--------------------------------------------------------------
+ *-------------------- Generate custom color for alerts
+ *-------------------------------------------------------------*/
+@mixin alert-color($color) {
+    border-color: lighten($color, 40%);
+    background-color: lighten($color, 45%);
+    color: darken($color, 10%);
+}
+
+/*--------------------------------------------------------------
+ *-------------------- Generate background color
+ *-------------------------------------------------------------*/
+@mixin bg-color($color:$blue) {
+    background-color: $color !important;
+}
+
+/*--------------------------------------------------------------
+ *-------------------- Generate text color
+ *-------------------------------------------------------------*/
+@mixin text-color($color:$blue) {
+    color: $color !important;
+}
+/*--------------------------------------------------------------
+ *-------------------- Generate custom background color for
+ * progress-bar
+ *-------------------------------------------------------------*/
+@mixin progress-color($color:$blue) {
+    background-color: $color;
+    color: set-text-color($color);
+}
+/*--------------------------------------------------------------
+ *-------------------- Generate custom colors for tooltip's box
+ * and the texts. we use it without argumant for default color
+ *-------------------------------------------------------------*/
+@mixin applyColor($color:$tooltipColor, $textColor:$tooltipTextColor) {
+     @each $position in top, bottom, left, right{
+        &.simptip-position-#{$position} {
+            &:before {
+                border-#{$position}-color: $color;
+            }
+            &:after {
+                background-color: $color;
+                color: $textColor;
+            }
+        }
+    }
+    @each $position in top, bottom {
+        &.simptip-position-#{$position} {
+            &.half-arrow {
+                &:before {
+                    border-right: $arrowSize+1px solid $color;
+                }
+            }
+        }
+    }
+}
+@mixin border-radius($radius: 4px) {
+    -webkit-border-radius: $radius;
+    border-radius: $radius;
+}
+@mixin box-sizing($box-model) {
+    -webkit-box-sizing: $box-model;
+    -moz-box-sizing: $box-model;
+    box-sizing: $box-model;
+}
+@mixin transition($transition...) {
+    -webkit-transition: $transition;
+    -moz-transition: $transition;
+    -o-transition: $transition;
+    -ms-transition: $transition;
+    transition: $transition;
+}
+@mixin fade ($duration: 0.2s) {
+     @include transition(opacity $duration linear, visibility $duration linear);
+}
+@mixin transform($string) {
+    -webkit-transform: $string;
+    -moz-transform: $string;
+    -ms-transform: $string;
+    -o-transform: $string;
+    transform: $string;
+}
+//generate multiline tooltips
+@mixin multiline ($width: 150px, $align: left) {
+    height: auto;
+    width: $width;
+    padding: $tooltipHeight/2;
+    line-height: $tooltipHeight - 3px;
+    white-space: normal;
+    text-align: $align;
+}
+

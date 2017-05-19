@@ -131,7 +131,7 @@ gulp.task('js', function () {
 
 	.pipe( newer(js.output) )
 	.pipe( size({ title: 'JS in ' }) )
-	.pipe( gulpif(!devBuild, uglifyJS()) )
+	.pipe( gulpif(!devBuild, uglify()) )
 	.pipe( size({ title: 'JS out ' }) )
 	.pipe( gulp.dest(js.output) )
 	.pipe( connect.reload() );

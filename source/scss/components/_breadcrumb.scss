@@ -1,0 +1,29 @@
+.breadcrumb {
+    text-align: right;
+
+    span, a {
+        padding: .1em 0 .1em .3em;
+        font-size: .8em;
+    }
+
+    span {
+        color: $dark-grey;
+    }
+
+    a {
+        color: $blue;
+
+        &:hover {
+            color: darken($blue, 10%);
+
+        }
+
+        &:after {
+            font-family: Flaticon;
+            font-style: normal;
+            content: "/";
+            color: darken($grey, 20%);
+            padding-right: .3em;
+        }
+    }
+}

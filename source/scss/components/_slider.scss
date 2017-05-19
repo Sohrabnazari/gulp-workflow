@@ -1,0 +1,108 @@
+/*! http://responsiveslides.com v1.54 by @viljamis */
+.rslides {
+    position: relative;
+    list-style: none;
+    overflow: hidden;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+.rslides li {
+    -webkit-backface-visibility: hidden;
+    position: absolute;
+    display: none;
+    width: 100%;
+    left: 0;
+    top: 0;
+}
+.rslides li:first-child {
+    position: relative;
+    display: block;
+    float: left;
+}
+.rslides img {
+    display: block;
+    height: auto;
+    float: left;
+    width: 100%;
+    border: 0;
+}
+/*--------------------------------------------------------------
+ *-------------------- Slider nav and pager
+ *-------------------------------------------------------------*/
+
+.slider-wrapper {
+    position: relative;
+
+    &:hover .rslides_tabs,
+    &:hover .rslides_nav {
+        opacity: 1;
+    }
+
+    .rslides_nav {
+        font-size: 0;
+        position: absolute;
+        top: calc(50% - 1.5rem);
+        z-index: 20;
+        color: $white;
+        text-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+        opacity: 0;
+        transition: all ease 0.2s;
+
+        &:hover {
+            color: $blue;
+        }
+
+        &:before {
+            font-family: 'icons';
+            font-size: 2rem;
+            font-style: normal;
+        }
+        &.prev {
+            right: 20px;
+
+            &:before {
+                content: $icon-circle-right;
+            }
+        }
+        &.next {
+            left: 20px;
+
+            &:before {
+                content: $icon-circle-left;
+            }
+        }
+    }
+
+    .rslides_tabs {
+        padding-right: 0;
+        margin: 0 auto;
+        position: absolute;
+        bottom: 30px;
+        width: 100%;
+        text-align: center;
+        z-index: 20;
+        opacity: 0;
+        transition: all ease 0.2s;
+
+        li {
+            display: inline-block;
+
+            a {
+                display: inline-block;
+                width: 30px;
+                height: 8px;
+                margin-left: 5px;
+                background-color: $white;
+                font-size: 0;
+            }
+
+            &.rslides_here {
+                a {
+                    background-color: $blue;
+                }
+            }
+        }
+
+    }
+}

@@ -1,0 +1,148 @@
+/*--------------------------------------------------------------
+ *-------------------- Buttons - 0.2
+ *-------------------------------------------------------------*/
+.btn {
+  -webkit-appearance: none;
+  outline: 0;
+  background: transparent;
+  padding: 10px 40px;
+  vertical-align: middle;
+  display: inline-block;
+  color: $blue;
+  font-size: $fsize-md;
+  font-weight: 300;
+  font-family: $primary-font;
+  text-decoration: none;
+  white-space: nowrap;
+  text-align: center;
+  border: 1px solid transparent;
+  border-radius: $border-radius;
+  transition: all 0.1s ease-in-out;
+  user-select: none;
+
+  &:hover {
+    color: darken($blue, 5%);
+  }
+  @each $color, $value in $all-colors {
+    &.#{$color} {
+      @include btn_color($value);
+    }
+  }
+  @each $color, $value in $all-colors {
+    &.tp-#{$color} {
+      @include btn_transparent_color($value);
+    }
+  }
+  @each $color, $value in $social-colors {
+    &.#{$color} {
+      @include btn_color($value);
+    }
+  }
+  @each $color, $value in $social-colors {
+    &.tp-#{$color} {
+      @include btn_transparent_color($value);
+    }
+    &.tp-white {
+      color: lighten($dark-grey, 20%);
+      border-color: lighten($dark-grey, 30%);
+
+      &:hover {
+        background-color: $white;
+        color: $dark-grey;
+        border-color: $dark-grey;
+      }
+    }
+  }
+
+  &.small {
+    padding: 4px 10px;
+    font-size: $fsize-sm;
+  }
+  &.large {
+    padding: 10px 40px;
+    font-size: $fsize-lg;
+  }
+
+  &.loading.play {
+    position: relative;
+    padding-left: 2.7rem;
+    cursor: default;
+    background-color: $grey;
+    color: $black;
+    border-color: $grey;
+
+    &:after {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      background-color: rgba(255, 255, 255, 0.3);
+      content: '';
+    }
+
+    &:before {
+      position: absolute;
+      content: '';
+      top: 50%;
+      left: 0;
+      font-size: 1.4em;
+      margin: -.6em .4em;
+      content: "\e125";
+      font-family: Flaticon;
+
+      animation: cssload-rotate 1500ms linear infinite;
+      -o-animation: cssload-rotate 1500ms linear infinite;
+      -ms-animation: cssload-rotate 1500ms linear infinite;
+      -webkit-animation: cssload-rotate 1500ms linear infinite;
+      -moz-animation: cssload-rotate 1500ms linear infinite;
+    }
+  }
+}
+
+
+.group-btn {
+  .btn {
+    border-radius: 0;
+    margin-right: -5px;
+
+    &:first-child {
+      margin-right: 0;
+      border-radius: 0 $border-radius $border-radius 0;
+    }
+    &:last-child {
+      border-radius: $border-radius 0 0 $border-radius;
+    }
+  }
+}
+
+
+@keyframes cssload-rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@-o-keyframes cssload-rotate {
+  100% {
+    -o-transform: rotate(360deg);
+  }
+}
+
+@-ms-keyframes cssload-rotate {
+  100% {
+    -ms-transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes cssload-rotate {
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@-moz-keyframes cssload-rotate {
+  100% {
+    -moz-transform: rotate(360deg);
+  }
+}

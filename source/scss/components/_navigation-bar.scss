@@ -1,0 +1,200 @@
+.menu {
+    width: 100%;
+    height: $nav_height;
+    background-color: $nav_bg_color;
+    border-bottom: 4px solid $nav_border_color;
+    box-shadow: $box_shadow;
+    border-radius: $nav-border-radius;
+
+
+    ul {
+        margin: 0;
+        padding: 0;
+        float: right;
+        list-style: none;
+        &:hover li.active > a {
+            background-color: $nav_bg_color;
+            color: $nav_text_color;
+        }
+        li {
+            position: relative;
+            float: right;
+            &:hover > ul {
+                visibility: visible;
+                opacity: 1;
+            }
+            a {
+                display: block;
+                height: $nav_height;
+                padding: 0 10px;
+                font: 14px/#{$nav_height} $h_font;
+                font-weight: 300;
+                color: $nav_text_color;
+                transition: all 190ms ease-in, 190ms ease-in;
+            }
+        }
+        li:first-child {
+            border-radius: 0 $border-radius $border-radius 0;
+
+            a:first-child {
+                border-radius: 0 $border-radius $border-radius 0;
+            }
+        }
+        li.active > a,
+        li.active:hover > a,
+        li:hover > a {
+            background-color: $nav_border_color;
+            color: $nav_text_hover_color;
+        }
+        li a:active,
+        li.active a:active {
+            color: $nav_text_color;
+        }
+        ul {
+            position: absolute;
+            visibility: hidden;
+            opacity: 0;
+            padding-top: 0;
+            background-color: $nav_border_color;
+            border-bottom: 2px solid $nav_border_color;
+            border-radius: 0 0 3px 3px;
+            transition: all 210ms linear 20ms;
+            li {
+                cursor: pointer;
+                border: 1px solid darken($nav_border_color, 5%);
+                border-bottom: none;
+                a {
+                    width: 140px;
+                    height: $nav_submenu_height;
+                    padding-left: 0;
+                    font-size: 0.8rem;
+                    color: $nav_text_hover_color;
+                    line-height: $nav_submenu_height;
+                    text-transform: none;
+                    &:active {
+                        color: $nav_text_color;
+                    }
+                }
+                span {
+                    position: absolute;
+                    top: 0;
+                    left: 10px;
+                    font-size: 15px;
+                }
+                &:hover > a {
+                    background-color: lighten($nav_border_color, 4%);
+                }
+            }
+            ul {
+                top: -1px;
+                right: 100%;
+                padding: 0;
+            }
+        }
+    }
+    input#nav-menu,
+    label {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 14px;
+        width: $nav_height;
+        height: $nav_height;
+        &:before {
+            border: none !important;
+            content: none !important;
+        }
+    }
+    input#nav-menu {
+        opacity: 0;
+        &:checked ~ label {
+            background-color: darken($nav_bg_color, 8%);
+        }
+        &:checked ~ ul {
+            display: block;
+        }
+    }
+    label {
+        background: url("../images/menu.svg") no-repeat center center lighten($nav_bg_color, 5%);
+        content: "\f05e" !important;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+    p {
+        display: none;
+        margin: 5px 20px 0 0;
+        font: 1.2rem $primary-font bold;
+        color: $nav_text_color;
+    }
+}
+@media only screen and (max-width: 1024px) {
+    .menu {
+        width: 95%;
+    }
+    .menu ul ul {
+        margin: 0;
+    }
+}
+@media only screen and (max-width: $media-md) {
+    .menu {
+        width: 100%;
+        min-height: $nav_height;
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+        input,
+        label,
+        p {
+            display: block;
+        }
+        ul {
+            width: 100%;
+            margin-top: $nav_height;
+            display: none;
+            li {
+                width: 100%;
+                a {
+                    height: 40px;
+                    line-height: 42px;
+                    font-size: 1rem;
+                }
+            }
+            ul {
+                width: 100%;
+                display: block;
+                position: static;
+                visibility: visible;
+                opacity: 1;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+                border: none;
+                background: none;
+                li {
+                    width: 25%;
+                    float: right;
+                    border: none;
+                    a {
+                        width: auto;
+                        padding: 0;
+                        text-align: center;
+                        color: $nav_text_color;
+                    }
+                    &:hover a {
+                        background-color: $nav_border_color;
+                    }
+                }
+                li a span,
+                ul {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+@media only screen and (max-width: 480px) {
+    .menu {
+        width: 100%;
+    }
+}

@@ -1,0 +1,78 @@
+// divider line
+.divider {
+    height: 1px;
+    display: block;
+    background-color: $divider_color;
+    margin: 5px auto;
+}
+// margin bottom and top 5px
+.mg-5 {
+    margin-bottom: 5px !important;
+    margin-top: 5px !important;
+}
+
+/*--------------------------------------------------------------
+ *-------------------- Padding
+ *-------------------------------------------------------------*/
+.p1 {
+    padding: 1rem;
+}
+
+/*--------------------------------------------------------------
+ *-------------------- Shadow
+ *-------------------------------------------------------------*/
+.box-shodow {
+    box-shadow: $box_shadow;
+}
+
+.border-1 {
+    border: .04rem solid rgba(0, 0, 0, 0.1);
+}
+/*--------------------------------------------------------------
+ *-------------------- Align
+ *-------------------------------------------------------------*/
+.ta-center {
+    text-align: center;
+}
+.ta-left {
+    text-align: left;
+}
+.ta-right {
+    text-align: right;
+}
+/*--------------------------------------------------------------
+ *-------------------- Display
+ *-------------------------------------------------------------*/
+.block {
+    display: block !important;
+}
+.circle {
+    border-radius: 50% !important;
+}
+
+/*--------------------------------------------------------------
+ *-------------------- Background Colors
+ *-------------------------------------------------------------*/
+@each $color, $value in $all-colors {
+    .bg-#{$color} {
+        @include bg-color($value);
+    }
+}
+@each $color, $value in $social-colors {
+    .bg-#{$color} {
+        @include bg-color($value);
+    }
+}
+/*--------------------------------------------------------------
+ *-------------------- text colors
+ *-------------------------------------------------------------*/
+@each $color, $value in $all-colors {
+    .color-#{$color} {
+        @include text-color($value);
+    }
+}
+@each $color, $value in $social-colors {
+    .color-#{$color} {
+        @include text-color($value);
+    }
+}

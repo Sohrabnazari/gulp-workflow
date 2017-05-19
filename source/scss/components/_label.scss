@@ -1,0 +1,18 @@
+/*--------------------------------------------------------------
+ *-------------------- Labels - 0.1
+ *-------------------------------------------------------------*/
+.label {
+  background-color: $grey;
+  border-radius: $border-radius;
+  color: $dark-grey;
+  display: inline;
+  padding: 0 .3rem;
+  vertical-align: baseline;
+  white-space: nowrap;
+
+  @each $color, $value in $all-colors {
+    &.#{$color} {
+      @include label-color($value);
+    }
+  }
+}
