@@ -2,14 +2,14 @@
   "name": "gulp-workflow",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "output/index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "?.git"
-  },
+  "keywords": [
+    "gulp",
+    "sass"
+  ],
   "author": "Sohrab Nazari",
   "license": "",
   "devDependencies": {

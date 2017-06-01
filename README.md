@@ -1,3 +1,3 @@
-# Sohrab Nazari Website Single Page
-This project is for my personal Responsive Single Page site.
+# MyWorkflow
+This project is my workflow,
 It uses Sass, gulp and npm.
