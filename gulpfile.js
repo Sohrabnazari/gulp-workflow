@@ -9,6 +9,7 @@ var
 	htmlclean 		= require('gulp-htmlclean'),
 	sass 			= require('gulp-sass'),
 	size 			= require('gulp-size'),
+	babel 			= require('gulp-babel'),
 	del 			= require('del'),
 	pkg 			= require('./package.json'),
 	uglify 			= require('gulp-uglify'),
@@ -127,8 +128,10 @@ gulp.task('js', function () {
 	return gulp.src( js.input )
 
 //  .pipe( concat( 'script.js' ) )
-//	.pipe( browserify() )
-
+	.pipe( browserify() )
+	.pipe(babel({
+            presets: ['es2015']
+    }))
 	.pipe( newer(js.output) )
 	.pipe( size({ title: 'JS in ' }) )
 	.pipe( gulpif(!devBuild, uglify()) )
