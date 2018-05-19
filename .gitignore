@@ -3,3 +3,4 @@
 .sass-cacheoutput
 node_modules
 output
+yarn.lock

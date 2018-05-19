@@ -22,7 +22,8 @@ var
     browserify      = require('gulp-browserify'),
     gutil           = require('gulp-util'),
     connect         = require('gulp-connect'),
-    clean         	= require('gulp-clean');
+    clean         	= require('gulp-clean'),
+	plumber 		= require('gulp-plumber');
 
 
 
@@ -123,15 +124,21 @@ gulp.task('fonts', function() {
 });
 
 
+
 // Copy and minify javascript files
 gulp.task('js', function () {
 	return gulp.src( js.input )
-
+	.pipe(plumber(function(error) {
+		gutil.log(gutil.colors.green(error.message));
+		this.emit('end');
+	}))
 //  .pipe( concat( 'script.js' ) )
 	.pipe( browserify() )
-	.pipe(babel({
-            presets: ['es2015']
-    }))
+	.pipe( babel({ 
+
+		presets: ["es2015", "stage-0"],
+	
+		}))
 	.pipe( newer(js.output) )
 	.pipe( size({ title: 'JS in ' }) )
 	.pipe( gulpif(!devBuild, uglify()) )
