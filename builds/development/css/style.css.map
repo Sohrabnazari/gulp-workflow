@@ -1,0 +1,1 @@
+{"version":3,"sources":["style.scss"],"names":[],"mappings":"AAGA;EACI,0BAA8B,EACjC","file":"style.css","sourcesContent":["$color : #e12;\r\n\r\n\r\nbody {\r\n    background-color: $color + 32%;\r\n}\r\n\r\n"]}
