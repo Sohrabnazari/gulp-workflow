@@ -1,1 +1,7 @@
+.DS_Store
+.idea
+.sass-cacheoutput
 node_modules
+output
+yarn.lock
+package-lock.json
