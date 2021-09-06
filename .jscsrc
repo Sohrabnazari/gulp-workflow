@@ -1,0 +1,5 @@
+{
+    "preset": "es2015",
+ 	"esversion": 6,
+ 	"esnext": true
+}

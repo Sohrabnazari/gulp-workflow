@@ -2,28 +2,47 @@
 
 // include gulp and plugins
 var
-	gulp 			= require('gulp'),
 	autoprefixer	= require('gulp-autoprefixer'),
-	newer 			= require('gulp-newer'),
-	preprocess 		= require('gulp-preprocess'),
-	htmlclean 		= require('gulp-htmlclean'),
-	sass 			= require('gulp-sass'),
-	size 			= require('gulp-size'),
 	babel 			= require('gulp-babel'),
-	del 			= require('del'),
-	pkg 			= require('./package.json'),
-	uglify 			= require('gulp-uglify'),
-  	sourcemaps 		= require('gulp-sourcemaps'),
-	postcss 		= require('gulp-postcss'),
-	rucksack 		= require('rucksack-css'),
+	clean         	= require('gulp-clean'),
+	concat          = require('gulp-concat'),
+	connect         = require('gulp-connect'),
 	cssnano 		= require('cssnano'),
-    gulpif          = require('gulp-if'),
-    concat          = require('gulp-concat'),
-    browserify      = require('gulp-browserify'),
-    gutil           = require('gulp-util'),
-    connect         = require('gulp-connect'),
-    clean         	= require('gulp-clean'),
-	plumber 		= require('gulp-plumber');
+	del 			= require('del'),
+	gulp            = require('gulp'),
+	gulpbrowserify  = require('gulp-browserify'),
+	gulpif          = require('gulp-if'),
+	gulpprint       = require('gulp-print'),
+	gutil           = require('gulp-util'),
+	htmlclean 		= require('gulp-htmlclean'),
+	jscs            = require('gulp-jscs'),
+	jshint          = require('gulp-jshint'),
+	newer 			= require('gulp-newer'),
+	notify          = require('gulp-notify'),
+	pkg 			= require('./package.json'),
+	plumber 		= require('gulp-plumber'),
+	postcss 		= require('gulp-postcss'),
+	preprocess 		= require('gulp-preprocess'),
+	rucksack 		= require('rucksack-css'),
+	sass            = require('gulp-sass'),
+	size 			= require('gulp-size'),
+	sourcemaps 		= require('gulp-sourcemaps'),
+	uglify 			= require('gulp-uglify'),
+	watchify        = require('watchify'),
+
+	// get argument from cli
+	args = require('yargs').argv,
+
+	// react and es6
+	browserify = require('browserify'),
+	babelify = require('babelify'),
+	vinylSource = require('vinyl-source-stream'),
+
+	//var uglify = require('uglify');
+	browserSync = require('browser-sync').create(),
+	reload = browserSync.reload;
+
+
 
 
 
@@ -128,10 +147,10 @@ gulp.task('fonts', function() {
 // Copy and minify javascript files
 gulp.task('js', function () {
 	return gulp.src( js.input )
-	.pipe(plumber(function(error) {
-		gutil.log(gutil.colors.green(error.message));
-		this.emit('end');
-	}))
+	// .pipe(plumber(function(error) {
+	// 	gutil.log(gutil.colors.green(error.message));
+	// 	this.emit('end');
+	// }))
 //  .pipe( concat( 'script.js' ) )
 	.pipe( browserify() )
 	.pipe( babel({ 
@@ -175,7 +194,7 @@ gulp.task( 'connect', function() {
 
 
 // default tasks
-gulp.task('default', ['html', 'sass', 'images', 'fonts', 'js', 'connect'], function() {
+gulp.task('default', gulp.series('html', 'sass', 'images', 'fonts', 'js', 'connect', function(){
 
 	gulp.watch( html.watch, ['html'] );
 	gulp.watch( css.watch, ['sass'] );
@@ -183,4 +202,4 @@ gulp.task('default', ['html', 'sass', 'images', 'fonts', 'js', 'connect'], funct
 	gulp.watch( images.input, ['images'] );
 	gulp.watch( fonts.input, ['fonts'] );
 
-});
+}));
